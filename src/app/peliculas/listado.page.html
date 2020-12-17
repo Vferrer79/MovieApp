@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Listado de Películas</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="row center">
+        <div class="col">
+            <ion-input [(ngModel)]="miBuscador"></ion-input>
+            <ion-button color="primary" (click)="mostrar()">Primary</ion-button>
+        </div>
+    </div>
+
+
+
+    <ion-card *ngFor="let pelicula of listaPeliculas">
+        <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title></ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content (click)="verDetalles(pelicula.idPelicula)">
+            <!-- <a [routerLink]="['/detalle',pelicula.idPelicula]">
+                {{pelicula.titulo}}
+            </a> -->
+            {{pelicula.titulo}}
+            <!-- <ion-button color="primary" (click)="verDetalles(pelicula.idPelicula)">Detalles</ion-button> -->
+        </ion-card-content>
+
+    </ion-card>
+</ion-content>
