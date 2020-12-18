@@ -23,17 +23,13 @@ export class DetallePage implements OnInit {
   titulo: string;
   descripcion: string;
   Duracion: string;
-  Genero: string;
+  Genero: string[] = [];
   imagen: string;
 
   constructor(private dataService: DataService,
     private router: Router, private activatedRoute: ActivatedRoute) { 
 
       this.idPelicula = this.activatedRoute.snapshot.params["idPelicula"];
-
-      // this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      //   return false;
-      // }
 
       this.router.events.subscribe((evt) => {
         if (evt instanceof NavigationEnd) {
@@ -51,14 +47,18 @@ export class DetallePage implements OnInit {
   mostrar(){
       this.dataService.GetPeliculaId(this.idPelicula).subscribe(
         data => {
-          console.log(data)
           this.titulo=data.title
           this.descripcion=data.overview
           this.Duracion=data.runtime
-          this.Genero=data.genres
-          this.imagen=data.backdrop_path
+          
+          this.imagen= 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + data.poster_path
 
+          data["genres"].forEach(element => {
+            this.Genero.push(element.name)
+          })
+          
         },
+        
         error => {
           console.log(error)
         }

@@ -5,19 +5,34 @@
 </ion-header>
 
 <ion-content>
-    <label>Título</label>
 
-    <ion-input>{{titulo}}</ion-input>
+    <div class="principal">
+        <div>
+            <img class="izquierda" src={{imagen}} width="400" height="500">
+            <aside>
+                <label>Título:</label>
+                <br>
+                <label>{{titulo}}</label>
+                <br><br>
+                <label>Duración:</label>
+                <br>
+                <label>{{Duracion}} minutos</label>
+                <br><br>
+                <label>Genero:</label>
+                <br>
+                <div *ngFor="let gen of Genero">
+                    <label>{{gen}}</label>
+                </div>
 
-    <label>Duración</label>
+                <br><br>
+                <label>Descripción:</label>
+                <br>
+                <label>{{descripcion}}</label>
 
-    <ion-input>{{Duracion}} minutos</ion-input>
+            </aside>
+        </div>
 
-    <label>Genero</label>
 
-    <ion-input>{{genero}}</ion-input>
+    </div>
 
-    <label>Descripción</label>
-
-    <ion-input>{{descripcion}}</ion-input>
 </ion-content>
