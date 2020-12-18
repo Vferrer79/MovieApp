@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { DataService } from '../_services/data.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
@@ -20,11 +20,15 @@ export class ListadoPage implements OnInit {
   miBuscador = '';
   idPelicula = '';
 
+  @HostListener('window:keydown.enter') enterEvent(){
+    this.mostrar()
+  }
+
   constructor(private dataService: DataService,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    
+    this.listaPeliculas=[];
   }
 
   mostrar(){

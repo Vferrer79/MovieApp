@@ -50,18 +50,18 @@ export class DetallePage implements OnInit {
           this.titulo=data.title
           this.descripcion=data.overview
           this.Duracion=data.runtime
-          
           this.imagen= 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + data.poster_path
-
           data["genres"].forEach(element => {
             this.Genero.push(element.name)
           })
-          
         },
-        
         error => {
           console.log(error)
         }
       )
+  }
+
+  volverInicio() {
+    this.router.navigateByUrl("/" )
   }
 }

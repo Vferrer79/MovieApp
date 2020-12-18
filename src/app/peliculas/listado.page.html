@@ -6,14 +6,7 @@
 </ion-header>
 
 <ion-content>
-    <div class="row center">
-        <div class="col">
-            <ion-input [(ngModel)]="miBuscador"></ion-input>
-            <ion-button color="primary" (click)="mostrar()">Buscar</ion-button>
-        </div>
-    </div>
-
-
+    <ion-searchbar showCancelButton="focus" color="light" [(ngModel)]="miBuscador" placeholder="Pulsar enter para buscar"></ion-searchbar>
 
     <ion-card *ngFor="let pelicula of listaPeliculas">
         <ion-card-header>
@@ -22,11 +15,7 @@
         </ion-card-header>
 
         <ion-card-content (click)="verDetalles(pelicula.idPelicula)">
-            <!-- <a [routerLink]="['/detalle',pelicula.idPelicula]">
-                {{pelicula.titulo}}
-            </a> -->
             {{pelicula.titulo}}
-            <!-- <ion-button color="primary" (click)="verDetalles(pelicula.idPelicula)">Detalles</ion-button> -->
         </ion-card-content>
 
     </ion-card>
