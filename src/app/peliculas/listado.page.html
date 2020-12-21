@@ -9,12 +9,11 @@
     <ion-searchbar showCancelButton="focus" color="light" [(ngModel)]="miBuscador" placeholder="Pulsar enter para buscar"></ion-searchbar>
 
     <ion-card *ngFor="let pelicula of listaPeliculas">
-        <ion-card-header>
-            <ion-card-subtitle></ion-card-subtitle>
-            <ion-card-title></ion-card-title>
-        </ion-card-header>
 
-        <ion-card-content (click)="verDetalles(pelicula.idPelicula)">
+        <ion-card-content class="card" (click)="verDetalles(pelicula.idPelicula)">
+            <ion-avatar slot="start">
+                <img src={{pelicula.imagen}}>
+            </ion-avatar>
             {{pelicula.titulo}}
         </ion-card-content>
 

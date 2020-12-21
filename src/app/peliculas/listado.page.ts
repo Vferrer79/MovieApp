@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 export interface Pelicula{
   titulo: string;
   idPelicula: string;
+  imagen: string;
 }
 
 @Component({
@@ -41,6 +42,7 @@ export class ListadoPage implements OnInit {
             this.pelicula = {
               idPelicula: element.id,
               titulo: element.title,
+              imagen: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + element.poster_path,
             }
             this.total = data['total_pages'];
             this.listaPeliculas.push(this.pelicula)
@@ -57,7 +59,6 @@ export class ListadoPage implements OnInit {
 
   verDetalles(id: string) {
     this.idPelicula = id
-    console.log(this.idPelicula)
     this.router.navigateByUrl("/detalle/" + this.idPelicula)
   }
 }
