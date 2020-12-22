@@ -24,7 +24,9 @@ export class DetallePage implements OnInit {
   descripcion: string;
   Duracion: string;
   Genero: string[] = [];
+  idioma: string[] = [];
   imagen: string;
+  fecha: string;
 
   constructor(private dataService: DataService,
     private router: Router, private activatedRoute: ActivatedRoute) { 
@@ -46,13 +48,19 @@ export class DetallePage implements OnInit {
 
   mostrar(){
       this.dataService.GetPeliculaId(this.idPelicula).subscribe(
+        
         data => {
-          this.titulo=data.title
-          this.descripcion=data.overview
-          this.Duracion=data.runtime
-          this.imagen= 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + data.poster_path
+          console.log(data);
+          this.titulo = data.title
+          this.descripcion = data.overview
+          this.Duracion = data.runtime
+          this.fecha = data.release_date.substring(0,4)
+          this.imagen = 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + data.poster_path
           data["genres"].forEach(element => {
             this.Genero.push(element.name)
+          })
+          data["spoken_languages"].forEach(element => {
+            this.idioma.push(element)
           })
         },
         error => {

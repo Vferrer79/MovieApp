@@ -16,7 +16,8 @@ export interface Pelicula{
 export class ListadoPage implements OnInit {
 
   pelicula: Pelicula;
-  total: number = 1; // de momento no sirve para nada, espor sihago un paginador
+  total: number = 1;
+  totalResultados: number;
   listaPeliculas: Pelicula[] = [];
   miBuscador = '';
   idPelicula = '';
@@ -37,6 +38,7 @@ export class ListadoPage implements OnInit {
     if(this.miBuscador != ''){
       this.dataService.GetPeliculas(this.miBuscador).subscribe(
         data => {
+          console.log(data)
           data["results"].forEach(element => {
 
             this.pelicula = {
@@ -45,6 +47,7 @@ export class ListadoPage implements OnInit {
               imagen: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2' + element.poster_path,
             }
             this.total = data['total_pages'];
+            this.totalResultados = data['total_results'];
             this.listaPeliculas.push(this.pelicula)
   
           });

@@ -12,7 +12,13 @@
             <aside>
                 <label>Título:</label>
                 <br>
-                <label>{{titulo}}</label>
+                <label>{{titulo}} ({{fecha}})</label>
+                <br><br>
+                <label>Idioma:</label>
+                <br>
+                <div *ngFor="let id of idioma">
+                    <label>{{id.name}}</label>
+                </div>
                 <br><br>
                 <label>Duración:</label>
                 <br>
